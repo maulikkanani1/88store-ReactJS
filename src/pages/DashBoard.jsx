@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import NavBar from "../Container/NavBar";
 import SideBar from "../Container/SideBar";
 
 function DashBoard() {
+  const [allCountData, setallCountData] = useState({
+    GSTToBePaid: 0,
+    compleateOrder: 0,
+    customerOrder: 0,
+    lastUpdate: "",
+    orderOfThisMonth: 2,
+    orderOfThisWeek: 2,
+    pendingOrder: 0,
+    salesOrder: 0,
+    totalItem: 0,
+    totalOrder: 0,
+    totalSales: 0,
+    unavailable: 0,
+  });
+
+  useEffect(() => {
+    axios
+      .get("http://139.59.46.91:3001/api/v1/getAllCount")
+      .then(({ data }) => {
+        setallCountData(data.success.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div className="hold-transition sidebar-mini layout-fixed">
       <div className="wrapper">
@@ -20,8 +47,6 @@ function DashBoard() {
                 <div className="col-sm-6">
                   <h1 className="m-0 text-dark">Dashboard</h1>
                 </div>
-                {/* /.col */}
-                {/* /.col */}
               </div>
               {/* /.row */}
             </div>
@@ -38,7 +63,7 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-info">
                     <div className="inner">
-                      <h3>150</h3>
+                      <h3>{allCountData.pendingOrder}</h3>
                       <p>Pending Orders</p>
                     </div>
                     <div className="icon">
@@ -51,7 +76,7 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-success">
                     <div className="inner">
-                      <h3>53</h3>
+                      <h3>{allCountData.compleateOrder}</h3>
                       <p>Completed Orders</p>
                     </div>
                     <div className="icon">
@@ -64,7 +89,7 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-warning">
                     <div className="inner">
-                      <h3>44</h3>
+                      <h3>{allCountData.totalOrder}</h3>
                       <p>Total Orders</p>
                     </div>
                     <div className="icon">
@@ -81,7 +106,7 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-info">
                     <div className="inner">
-                      <h3>150</h3>
+                      <h3>{allCountData.totalItem}</h3>
                       <p>Total Items</p>
                     </div>
                     <div className="icon">
@@ -94,7 +119,7 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-success">
                     <div className="inner">
-                      <h3>26/11/2020</h3>
+                      <h3>{new Date(allCountData.lastUpdate).toLocaleDateString()}</h3>
                       <p>Last Updated</p>
                     </div>
                     <div className="icon">
@@ -107,7 +132,7 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-warning">
                     <div className="inner">
-                      <h3>44</h3>
+                      <h3>{allCountData.unavailable}</h3>
                       <p>Unavailable</p>
                     </div>
                     <div className="icon">
@@ -124,7 +149,7 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-info">
                     <div className="inner">
-                      <h3>150</h3>
+                      <h3>{allCountData.customerOrder}</h3>
                       <p>Customer Orders</p>
                     </div>
                     <div className="icon">
@@ -137,7 +162,7 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-success">
                     <div className="inner">
-                      <h3>200</h3>
+                      <h3>{allCountData.salesOrder}</h3>
                       <p>Sales Person Orders</p>
                     </div>
                     <div className="icon">
@@ -150,7 +175,7 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-warning">
                     <div className="inner">
-                      <h3>99,99,99,999</h3>
+                      <h3>{allCountData.GSTToBePaid}</h3>
                       <p>Total GST to be Paid</p>
                     </div>
                     <div className="icon">
@@ -166,7 +191,7 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-info">
                     <div className="inner">
-                      <h3>150</h3>
+                      <h3>{allCountData.orderOfThisWeek}</h3>
                       <p>Orders This Week</p>
                     </div>
                     <div className="icon">
@@ -179,7 +204,7 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-success">
                     <div className="inner">
-                      <h3>600</h3>
+                      <h3>{allCountData.orderOfThisMonth}</h3>
                       <p>Orders This Month</p>
                     </div>
                     <div className="icon">
@@ -192,7 +217,7 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-warning">
                     <div className="inner">
-                      <h3>99,99,99,999</h3>
+                      <h3>{allCountData.totalSales}</h3>
                       <p>Total Sales</p>
                     </div>
                     <div className="icon">
@@ -293,9 +318,7 @@ function DashBoard() {
                       <div id="sparkline-3" />
                       <div className="text-white">Sales</div>
                     </div>
-                    {/* ./col */}
                   </div>
-                  {/* /.row */}
                 </div>
               </div>
               {/* /.card */}
@@ -337,7 +360,6 @@ function DashBoard() {
                       />
                       <div className="text-white">Mail-Orders</div>
                     </div>
-                    {/* ./col */}
                     <div className="col-4 text-center">
                       <input
                         type="text"
@@ -350,7 +372,6 @@ function DashBoard() {
                       />
                       <div className="text-white">Online</div>
                     </div>
-                    {/* ./col */}
                     <div className="col-4 text-center">
                       <input
                         type="text"
@@ -363,9 +384,7 @@ function DashBoard() {
                       />
                       <div className="text-white">In-Store</div>
                     </div>
-                    {/* ./col */}
                   </div>
-                  {/* /.row */}
                 </div>
                 {/* /.card-footer */}
               </div>
@@ -378,30 +397,10 @@ function DashBoard() {
         </div>
         {/* /.row (main row) */}
       </div>
-      {/* /.container-fluid */}
-      {/* /.content */}
-      {/* /.content-wrapper */}
-      {/* Control Sidebar */}
+
       <aside className="control-sidebar control-sidebar-dark">
         {/* Control sidebar content goes here */}
       </aside>
-      {/* /.control-sidebar */}
-      {/* ./wrapper */}
-      {/* jQuery */}
-      {/* jQuery UI 1.11.4 */}
-      {/* Resolve conflict in jQuery UI tooltip with Bootstrap tooltip */}
-      {/* Bootstrap 4 */}
-      {/* ChartJS */}
-      {/* Sparkline */}
-      {/* JQVMap */}
-      {/* jQuery Knob Chart */}
-      {/* daterangepicker */}
-      {/* Tempusdominus Bootstrap 4 */}
-      {/* Summernote */}
-      {/* overlayScrollbars */}
-      {/* AdminLTE App */}
-      {/* AdminLTE dashboard demo (This is only for demo purposes) */}
-      {/* AdminLTE for demo purposes */}
     </div>
   );
 }
