@@ -1,0 +1,95 @@
+
+[
+    {
+        "id": 511,
+        "title": "meat and meat products"
+    },
+    {
+        "id": 1512,
+        "title": "fish and fish products"
+    },
+    {
+        "id": 1513,
+        "title": "fruit and vegetables"
+    },
+    {
+        "id": 1514,
+        "title": "vegetable and animal oils and fats"
+    },
+    {
+        "id": 1520,
+        "title": "dairy products"
+    },
+    {
+        "id": 1531,
+        "title": " grain mill products"
+    },
+    {
+        "id": 1532,
+        "title": "starches and starch products"
+    },
+    {
+        "id": 1533,
+        "title": "animal feeds"
+    },
+    {
+        "id": 1541,
+        "title": " bakery products"
+    },
+    {
+        "id": 1542,
+        "title": " sugar"
+    },
+    {
+        "id": 1543,
+        "title": "cocoa, chocolate and sugar confectionery"
+    },
+    {
+        "id": 1544,
+        "title": "macaroni, noodles, couscous"
+    },
+    {
+        "id": 1549,
+        "title": "other food products"
+    },
+    {
+        "id": 1551,
+        "title": "spirits, ethyl alcohol"
+    },
+    {
+        "id": 1552,
+        "title": "wines"
+    },
+    {
+        "id": 1553,
+        "title": "malt liquors and malt"
+    },
+    {
+        "id": 1554,
+        "title": "soft drinks, mineral waters"
+    },
+    {
+        "id": 1600,
+        "title": "tobacco products"
+    },
+    {
+        "id": 2101,
+        "title": "pulp, paper and paperboard"
+    },
+    {
+        "id": 2102,
+        "title": "corrugated paper, containers"
+    },
+    {
+        "id": 2109,
+        "title": "other articles of paper and paperboard"
+    },
+    {
+        "id": 2424,
+        "title": "soap and detergents, cleaning preparations, perfumes"
+    },
+    {
+        "id": 2430,
+        "title": "men's and women's inner garments, shaving gels, deodorants, personal care, home care"
+    }
+]

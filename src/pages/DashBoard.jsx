@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-
+import { GetdashboardData } from "../ApiService";
 import NavBar from "../Container/NavBar";
 import SideBar from "../Container/SideBar";
 
@@ -21,8 +20,7 @@ function DashBoard() {
   });
 
   useEffect(() => {
-    axios
-      .get("http://139.59.46.91:3001/api/v1/getAllCount")
+    GetdashboardData()
       .then(({ data }) => {
         setallCountData(data.success.data);
       })

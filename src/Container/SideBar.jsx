@@ -17,8 +17,6 @@ function SideBar() {
             role="menu"
             data-accordion="false"
           >
-            {/* Add icons to the links using the .nav-icon class
-         with font-awesome or any other icon font library */}
             <li className="nav-item">
               <Link to="/" className="nav-link">
                 <p>Dashboard</p>
@@ -33,17 +31,17 @@ function SideBar() {
               </Link>
               <ul className="nav nav-treeview">
                 <li className="nav-item">
-                  <Link to="current.html" className="nav-link">
+                  <Link to="/CurrentOrders" className="nav-link">
                     <p>Current Orders</p>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="dispatch.html" className="nav-link">
+                  <Link to="/DispatchOrders" className="nav-link">
                     <p>Dispatch Orders</p>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="completed.html" className="nav-link">
+                  <Link to="/CompletedOrders" className="nav-link">
                     <p>Completed Orders</p>
                   </Link>
                 </li>
@@ -86,19 +84,19 @@ function SideBar() {
                   </Link>
                   <ul className="nav nav-treeview">
                     <li className="nav-item">
-                      <Link to="/AddCust" className="nav-link">
+                      <Link to="/AddCustomer" className="nav-link">
                         <p>Add Customer</p>
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="addstaff.html" className="nav-link">
+                      <Link to="/AddStaff" className="nav-link">
                         <p>Add Staff</p>
                       </Link>
                     </li>
                   </ul>
                 </li>
                 <li className="nav-item">
-                  <Link to="/ListUsers" className="nav-link">
+                  <Link to="/ListCustomer" className="nav-link">
                     <p>Edit User</p>
                   </Link>
                 </li>
