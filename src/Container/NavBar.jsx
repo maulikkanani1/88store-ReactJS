@@ -48,7 +48,9 @@ function NavBar() {
         </div>
       </form>
       {/* Right navbar links */}
-      <ul className="navbar-nav ml-auto">{/* Notifications Dropdown Menu */}</ul>
+      <ul className="navbar-nav ml-auto">
+        {/* Notifications Dropdown Menu */}
+      </ul>
     </nav>
   );
 }

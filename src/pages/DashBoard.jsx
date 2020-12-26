@@ -54,7 +54,10 @@ function DashBoard() {
           </div>
           {/* /.content-header */}
           {/* Main content */}
-          <section className="content" style={{ backgroundColor: "aquamarine" }}>
+          <section
+            className="content"
+            style={{ backgroundColor: "aquamarine" }}
+          >
             <div className="container-fluid">
               {/* Small boxes (Stat box) */}
               <h3 className="m-0 text-dark">Orders</h3>
@@ -119,7 +122,9 @@ function DashBoard() {
                   {/* small box */}
                   <div className="small-box bg-success">
                     <div className="inner">
-                      <h3>{new Date(allCountData.lastUpdate).toLocaleDateString()}</h3>
+                      <h3>
+                        {new Date(allCountData.lastUpdate).toLocaleDateString()}
+                      </h3>
                       <p>Last Updated</p>
                     </div>
                     <div className="icon">
@@ -243,12 +248,20 @@ function DashBoard() {
                       <div className="card-tools">
                         <ul className="nav nav-pills ml-auto">
                           <li className="nav-item">
-                            <a className="nav-link active" href="#revenue-chart" data-toggle="tab">
+                            <a
+                              className="nav-link active"
+                              href="#revenue-chart"
+                              data-toggle="tab"
+                            >
                               Area
                             </a>
                           </li>
                           <li className="nav-item">
-                            <a className="nav-link" href="#sales-chart" data-toggle="tab">
+                            <a
+                              className="nav-link"
+                              href="#sales-chart"
+                              data-toggle="tab"
+                            >
                               Donut
                             </a>
                           </li>
@@ -264,14 +277,22 @@ function DashBoard() {
                           id="revenue-chart"
                           style={{ position: "relative", height: "300px" }}
                         >
-                          <canvas id="revenue-chart-canvas" height={300} style={{ height: "300px" }} />
+                          <canvas
+                            id="revenue-chart-canvas"
+                            height={300}
+                            style={{ height: "300px" }}
+                          />
                         </div>
                         <div
                           className="chart tab-pane"
                           id="sales-chart"
                           style={{ position: "relative", height: "300px" }}
                         >
-                          <canvas id="sales-chart-canvas" height={300} style={{ height: "300px" }} />
+                          <canvas
+                            id="sales-chart-canvas"
+                            height={300}
+                            style={{ height: "300px" }}
+                          />
                         </div>
                       </div>
                     </div>
@@ -330,10 +351,18 @@ function DashBoard() {
                     Sales Graph
                   </h3>
                   <div className="card-tools">
-                    <button type="button" className="btn bg-info btn-sm" data-card-widget="collapse">
+                    <button
+                      type="button"
+                      className="btn bg-info btn-sm"
+                      data-card-widget="collapse"
+                    >
                       <i className="fas fa-minus" />
                     </button>
-                    <button type="button" className="btn bg-info btn-sm" data-card-widget="remove">
+                    <button
+                      type="button"
+                      className="btn bg-info btn-sm"
+                      data-card-widget="remove"
+                    >
                       <i className="fas fa-times" />
                     </button>
                   </div>
@@ -342,7 +371,12 @@ function DashBoard() {
                   <canvas
                     className="chart"
                     id="line-chart"
-                    style={{ minHeight: "250px", height: "250px", maxHeight: "250px", maxWidth: "100%" }}
+                    style={{
+                      minHeight: "250px",
+                      height: "250px",
+                      maxHeight: "250px",
+                      maxWidth: "100%",
+                    }}
                   />
                 </div>
                 {/* /.card-body */}

@@ -1,18 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-import "./assets/css/adminlte.min.css";
-import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min";
+import "admin-lte/dist/css/adminlte.min.css";
+import "admin-lte/dist/js/adminlte.min";
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
