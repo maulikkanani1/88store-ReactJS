@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Container from "../../Container/Container";
+import { getAllOrders } from "../../ApiService";
 
 export default function CurrentOrders() {
+  const [currentOrder, setcurrentOrder] = useState([]);
+
+  useEffect(() => {
+    getAllOrders("pending").then((data) => {
+      setcurrentOrder(data);
+    });
+  }, []);
+
   return (
     <Container>
+      <div className="row mb-2">
+        <h2>Current Orders</h2>
+      </div>
       <div className="card">
         <div className="card-body p-0">
           <table className="table table-striped projects">
@@ -12,47 +24,29 @@ export default function CurrentOrders() {
               <tr>
                 <th>Order ID</th>
                 <th>Customer Name</th>
-                <th>Date</th>
+                <th>Customer Number</th>
                 <th>Order Value</th>
+                <th>Order Type</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>EE001</td>
-                <td>
-                  <a> customer name 1 </a>
-                </td>
-                <td>
-                  <a> Customer </a>
-                </td>
-                <td>
-                  <a> 9999988888 </a>
-                </td>
-                <td className="project-actions text-right">
-                  <a className="btn btn-primary btn-sm" href="#">
-                    <i className="fas fa-folder"> </i>
-                    View Order
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>SP001</td>
-                <td>
-                  <a> Sales Person name 1 </a>
-                </td>
-                <td>
-                  <a> Sales Person </a>
-                </td>
-                <td>
-                  <a> 9999988888 </a>
-                </td>
-                <td className="project-actions text-right">
-                  <a className="btn btn-primary btn-sm" href="#">
-                    <i className="fas fa-folder"> </i>
-                    View Order
-                  </a>
-                </td>
-              </tr>
+              {currentOrder.map(({ orderId, orderType, createdAt, clientId, finalTotal }) => (
+                <tr key={orderId}>
+                  <td>{String(orderId)}</td>
+                  <td>{clientId.name}</td>
+                  <td>{clientId.phoneNumber}</td>
+                  <td>{finalTotal}</td>
+                  <td>{orderType}</td>
+                  <td>{new Date(createdAt).toLocaleDateString()}</td>
+                  <td className="project-actions text-right">
+                    <button className="btn btn-primary btn-sm">
+                      <i className="fas fa-folder"> </i>
+                      View Order
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

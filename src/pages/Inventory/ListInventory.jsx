@@ -16,7 +16,7 @@ export default function ListInventory() {
 
   const editInventory = (index) => {
     history.push({
-      pathname: '/AddInventory',
+      pathname: "/AddInventory",
       state: allInventory[index],
     });
   };
@@ -26,57 +26,46 @@ export default function ListInventory() {
       <div className="card card-solid">
         <div className="card-body pb-0">
           <div className="row d-flex align-items-stretch">
-            {allInventory.map(
-              (
-                { SKUNumber, images, name, unitPerQuantity, priceOfPurchase },
-                index
-              ) => (
-                <div
-                  key={index}
-                  className="col-12 col-sm-6 col-md-3 d-flex align-items-stretch"
-                >
-                  <div className="card bg-light">
-                    <div className="card-body pt-0">
-                      <div className="row">
-                        <div className="col-7">
-                          <h2 className="lead">
-                            <br />
-                            <b>{name}</b>
-                          </h2>
-                          <p className="text-muted text-sm">
-                            <b>SKU Number: </b> {SKUNumber}
-                          </p>
-                          <p className="text-muted text-sm">
-                            <b>Price : </b> {priceOfPurchase}
-                          </p>
-                          <p className="text-muted text-sm">
-                            <b>Available Quantity : </b> {unitPerQuantity}
-                          </p>
-                        </div>
-                        <div className="col-5 text-center">
+            {allInventory.map(({ SKUNumber, images, name, unitPerQuantity, priceOfPurchase }, index) => (
+              <div key={index} className="col-12 col-sm-6 col-md-3 d-flex align-items-stretch">
+                <div className="card bg-light">
+                  <div className="card-body pt-0">
+                    <div className="row">
+                      <div className="col-7">
+                        <h2 className="lead">
                           <br />
-                          <img
-                            src={`http://139.59.46.91:3001/InventoryImage/${images[0]}`}
-                            alt=""
-                            className="img img-fluid"
-                          />
-                        </div>
+                          <b>{name}</b>
+                        </h2>
+                        <p className="text-muted text-sm">
+                          <b>SKU Number: </b> {SKUNumber}
+                        </p>
+                        <p className="text-muted text-sm">
+                          <b>Price : </b> {priceOfPurchase}
+                        </p>
+                        <p className="text-muted text-sm">
+                          <b>Available Quantity : </b> {unitPerQuantity}
+                        </p>
                       </div>
-                    </div>
-                    <div className="card-footer">
-                      <div className="text-right">
-                        <button
-                          onClick={() => editInventory(index)}
-                          className="btn btn-sm btn-primary"
-                        >
-                          EDIT
-                        </button>
+                      <div className="col-5 text-center">
+                        <br />
+                        <img
+                          src={`http://139.59.46.91:3001/InventoryImage/${images[0]}`}
+                          alt=""
+                          className="img img-fluid"
+                        />
                       </div>
                     </div>
                   </div>
+                  <div className="card-footer">
+                    <div className="text-right">
+                      <button onClick={() => editInventory(index)} className="btn btn-sm btn-primary">
+                        EDIT
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              )
-            )}
+              </div>
+            ))}
           </div>
 
           <div className="card-footer">

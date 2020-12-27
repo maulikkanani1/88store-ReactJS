@@ -16,9 +16,7 @@ export default function AddCustomer() {
   useEffect(() => {
     if (location.state) {
       setisUpdate(true);
-      Object.keys(location.state).forEach((key) =>
-        setValue(key, location.state[key])
-      );
+      Object.keys(location.state).forEach((key) => setValue(key, location.state[key]));
     }
   }, [location.state]);
 
@@ -66,49 +64,23 @@ export default function AddCustomer() {
               <div className="card-body">
                 <div className="form-group">
                   <label>Name</label>
-                  <input
-                    className="form-control"
-                    placeholder="Enter Name"
-                    name="name"
-                    ref={register}
-                  />
+                  <input className="form-control" placeholder="Enter Name" name="name" ref={register} />
                 </div>
                 <div className="form-group">
                   <label>Email</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Enter Email"
-                    ref={register}
-                    name="email"
-                  />
+                  <input type="email" className="form-control" placeholder="Enter Email" ref={register} name="email" />
                 </div>
                 <div className="form-group">
                   <label>Phone Number</label>
-                  <input
-                    className="form-control"
-                    placeholder="Enter Phone Number"
-                    name="phoneNumber"
-                    ref={register}
-                  />
+                  <input className="form-control" placeholder="Enter Phone Number" name="phoneNumber" ref={register} />
                 </div>
                 <div className="form-group">
                   <label>GST Number</label>
-                  <input
-                    className="form-control"
-                    placeholder="Enter GST Number"
-                    ref={register}
-                    name="GSTNumber"
-                  />
+                  <input className="form-control" placeholder="Enter GST Number" ref={register} name="GSTNumber" />
                 </div>
                 <div className="form-group">
                   <label>Bussiness Type</label>
-                  <select
-                    className="form-control select2"
-                    style={{ width: "100%" }}
-                    ref={register}
-                    name=""
-                  >
+                  <select className="form-control select2" style={{ width: "100%" }} ref={register} name="">
                     <option selected="selected">Super Stockist</option>
                     <option>Wholesale Distributor</option>
                     <option> Retail Distributor</option>
@@ -128,12 +100,7 @@ export default function AddCustomer() {
                 </div>
                 <div className="form-group">
                   <label>State</label>
-                  <select
-                    className="form-control select2"
-                    style={{ width: "100%" }}
-                    ref={register}
-                    name="state"
-                  >
+                  <select className="form-control select2" style={{ width: "100%" }} ref={register} name="state">
                     <option selected="selected">Kerla</option>
                     <option>Tamil Nadu</option>
                     <option>Karnataka</option>
@@ -144,30 +111,15 @@ export default function AddCustomer() {
                 </div>
                 <div className="form-group">
                   <label>Customer Discount</label>
-                  <input
-                    type="number"
-                    className="form-control"
-                    placeholder="Enter Customer Discount"
-                    ref={register}
-                  />
+                  <input type="number" className="form-control" placeholder="Enter Customer Discount" ref={register} />
                 </div>
                 <div className="form-group">
                   <label>Credit Limit Time</label>
-                  <input
-                    type="number"
-                    className="form-control"
-                    placeholder="Enter Credit Limit Time"
-                    ref={register}
-                  />
+                  <input type="number" className="form-control" placeholder="Enter Credit Limit Time" ref={register} />
                 </div>
                 <div className="form-group">
                   <label>Credit Limit Amount</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Enter Credit Limit Amount"
-                    ref={register}
-                  />
+                  <input type="email" className="form-control" placeholder="Enter Credit Limit Amount" ref={register} />
                 </div>
                 <div className="card-footer">
                   <button type="submit" className="btn btn-primary">

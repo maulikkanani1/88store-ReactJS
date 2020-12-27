@@ -19,18 +19,13 @@ export default function AddInventry(props) {
   useEffect(() => {
     if (location.state) {
       setisUpdate(true);
-      Object.keys(location.state).forEach((key) =>
-        setValue(key, location.state[key])
-      );
+      Object.keys(location.state).forEach((key) => setValue(key, location.state[key]));
     }
   }, [location.state]);
 
   const onSubmit = (data) => {
-
     const formData = new FormData();
-    Object.keys(data).forEach((key) =>
-      formData.append(key, key === "files" ? data[key][0] : data[key])
-    );
+    Object.keys(data).forEach((key) => formData.append(key, key === "files" ? data[key][0] : data[key]));
 
     if (isUpdate) {
       updateInventory(location.state._id, formData)
@@ -69,12 +64,7 @@ export default function AddInventry(props) {
               <div className="card-body">
                 <div className="form-group">
                   <label>Product Name</label>
-                  <input
-                    className="form-control"
-                    placeholder="Enter Product Name"
-                    ref={register}
-                    name="name"
-                  />
+                  <input className="form-control" placeholder="Enter Product Name" ref={register} name="name" />
                 </div>
                 <div className="form-group">
                   <label>Product description</label>
@@ -97,11 +87,7 @@ export default function AddInventry(props) {
                 </div>
                 <div className="form-group">
                   <label>Veg / Non-Veg</label>
-                  <select
-                    className="form-control select2"
-                    name="itemType"
-                    ref={register}
-                  >
+                  <select className="form-control select2" name="itemType" ref={register}>
                     <option>Veg</option>
                     <option>Non-veg</option>
                   </select>
@@ -118,11 +104,7 @@ export default function AddInventry(props) {
                 </div>
                 <div className="form-group">
                   <label>Unit</label>
-                  <select
-                    className="form-control select2"
-                    name="quantityType"
-                    ref={register}
-                  >
+                  <select className="form-control select2" name="quantityType" ref={register}>
                     <option>pieces</option>
                     <option>bottle</option>
                     <option>boxes</option>
@@ -151,11 +133,7 @@ export default function AddInventry(props) {
                 </div>
                 <div className="form-group">
                   <label>GST</label>
-                  <select
-                    className="form-control select2"
-                    name="GSTSleb"
-                    ref={register}
-                  >
+                  <select className="form-control select2" name="GSTSleb" ref={register}>
                     <option value="5">5%</option>
                     <option value="12">12%</option>
                     <option value="18">18%</option>
@@ -236,11 +214,7 @@ export default function AddInventry(props) {
                 </div>
                 <div className="form-group">
                   <label>Country Of Orgin</label>
-                  <select
-                    className="form-control select2"
-                    name="countryOfOrigin"
-                    ref={register}
-                  >
+                  <select className="form-control select2" name="countryOfOrigin" ref={register}>
                     {countryData.map(({ name }) => (
                       <option key={name} value={name}>
                         {name}
@@ -250,11 +224,7 @@ export default function AddInventry(props) {
                 </div>
                 <div className="form-group">
                   <label>Select Category</label>
-                  <select
-                    className="form-control select2"
-                    name="itemCategory"
-                    ref={register}
-                  >
+                  <select className="form-control select2" name="itemCategory" ref={register}>
                     {catogaryData.map(({ title }) => (
                       <option key={title} value={title}>
                         {title}
@@ -264,11 +234,7 @@ export default function AddInventry(props) {
                 </div>
                 <div className="form-group">
                   <label>Add Sub Category</label>
-                  <select
-                    className="form-control select2"
-                    name="itemSubcategory"
-                    ref={register}
-                  >
+                  <select className="form-control select2" name="itemSubcategory" ref={register}>
                     <option>Food</option>
                     <option>Food1</option>
                   </select>
@@ -277,12 +243,7 @@ export default function AddInventry(props) {
                   <label>Item Image</label>
                   <div className="input-group">
                     <div className="custom-file">
-                      <input
-                        type="file"
-                        className="custom-file-input"
-                        name="files"
-                        ref={register}
-                      />
+                      <input type="file" className="custom-file-input" name="files" ref={register} />
                       <label className="custom-file-label">Choose file</label>
                     </div>
                   </div>

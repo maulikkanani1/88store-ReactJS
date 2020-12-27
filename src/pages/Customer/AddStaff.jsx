@@ -14,10 +14,7 @@ export default function AddStaff() {
               <div className="card-body">
                 <div className="form-group">
                   <label>User Type</label>
-                  <select
-                    className="form-control select2"
-                    style={{ width: "100%" }}
-                  >
+                  <select className="form-control select2" style={{ width: "100%" }}>
                     <option selected="selected">Sales Person</option>
                     <option>Warehouse</option>
                     <option>Partner</option>
@@ -25,21 +22,11 @@ export default function AddStaff() {
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail1">Name</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleInputEmail1"
-                    placeholder="Enter Name"
-                  />
+                  <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter Name" />
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail1">Email</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleInputEmail1"
-                    placeholder="Enter Email"
-                  />
+                  <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter Email" />
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail1">Phone Number</label>

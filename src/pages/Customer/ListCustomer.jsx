@@ -51,46 +51,35 @@ export default function ListCustomer() {
               </tr>
             </thead>
             <tbody>
-              {allCustomer.map(
-                ({ name, phoneNumber, email, _id, role }, index) => (
-                  <tr key={index}>
-                    <td>{String(_id).substr(0, 6)}</td>
-                    <td>{name}</td>
-                    <td>{role}</td>
-                    <td>{phoneNumber}</td>
-                    <td>{email}</td>
-                    <td
-                      style={{
-                        display: "flex",
-                        "justify-content": "space-around",
-                        width: "245px",
-                      }}
-                    >
-                      <button
-                        className="btn btn-primary btn-sm"
-                        onClick={() => editCustomer(index)}
-                      >
-                        <i className="fas fa-folder pr-1"></i>
-                        View
-                      </button>
-                      <button
-                        className="btn btn-info btn-sm"
-                        onClick={() => editCustomer(index)}
-                      >
-                        <i className="fas fa-pencil-alt pr-1"></i>
-                        Edit
-                      </button>
-                      <button
-                        className="btn btn-danger btn-sm"
-                        onClick={() => deleteCustomerr(_id)}
-                      >
-                        <i className="fas fa-trash pr-1"></i>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                )
-              )}
+              {allCustomer.map(({ name, phoneNumber, email, _id, role }, index) => (
+                <tr key={index}>
+                  <td>{String(_id).substr(0, 6)}</td>
+                  <td>{name}</td>
+                  <td>{role}</td>
+                  <td>{phoneNumber}</td>
+                  <td>{email}</td>
+                  <td
+                    style={{
+                      display: "flex",
+                      "justify-content": "space-around",
+                      width: "245px",
+                    }}
+                  >
+                    <button className="btn btn-primary btn-sm" onClick={() => editCustomer(index)}>
+                      <i className="fas fa-folder pr-1"></i>
+                      View
+                    </button>
+                    <button className="btn btn-info btn-sm" onClick={() => editCustomer(index)}>
+                      <i className="fas fa-pencil-alt pr-1"></i>
+                      Edit
+                    </button>
+                    <button className="btn btn-danger btn-sm" onClick={() => deleteCustomerr(_id)}>
+                      <i className="fas fa-trash pr-1"></i>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
