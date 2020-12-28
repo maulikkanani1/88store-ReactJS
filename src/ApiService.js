@@ -21,3 +21,7 @@ export const getAllOrders = (orderStatus) =>
   axios
     .get(`${MAIN_API}/getAllOrder`)
     .then(({ data }) => data.success.data.filter((item) => item.orderStatus === orderStatus));
+
+export const update_Order = (data, id) => axios.put(`${MAIN_API}/order/${id}`, { ...data });
+
+export const generateInvoice = (data) => axios.post(`${MAIN_API}/orderInvoice`, data);

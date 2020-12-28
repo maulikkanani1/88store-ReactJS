@@ -6,7 +6,7 @@ function SideBar() {
   return (
     <aside className="main-sidebar sidebar-dark-primary elevation-4">
       <Link to="/" className="brand-link">
-        <img src={Logo} alt="88Store Logo" style={{ width: "inherit" }} />
+        <img style={{ width: "15rem" }} src={Logo} alt="88Store Logo" />
       </Link>
 
       <div className="sidebar">
@@ -31,17 +31,17 @@ function SideBar() {
               </Link>
               <ul className="nav nav-treeview">
                 <li className="nav-item">
-                  <Link to="/CurrentOrders" className="nav-link">
+                  <Link to="/Orders/Current" className="nav-link">
                     <p>Current Orders</p>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/DispatchOrders" className="nav-link">
+                  <Link to="/Orders/Dispatch" className="nav-link">
                     <p>Dispatch Orders</p>
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/CompletedOrders" className="nav-link">
+                  <Link to="/Orders/Completed" className="nav-link">
                     <p>Completed Orders</p>
                   </Link>
                 </li>

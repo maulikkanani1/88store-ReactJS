@@ -1,0 +1,7 @@
+.border-width {
+  border-width: "5px!important";
+}
+.project-actions {
+  display: flex;
+  justify-content: space-between;
+}

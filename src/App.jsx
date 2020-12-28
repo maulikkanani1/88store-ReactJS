@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 
+import "./assets/css/main.css";
 import DashBoard from "./pages/DashBoard";
 
 import AddCustomer from "./pages/Customer/AddCustomer";
@@ -13,8 +14,7 @@ import AddInventory from "./pages/Inventory/AddInventory";
 import ListInventory from "./pages/Inventory/ListInventory";
 
 import CurrentOrders from "./pages/Orders/CurrentOrders";
-import DispatchOrders from "./pages/Orders/DispatchOrders";
-import CompletedOrders from "./pages/Orders/CompletedOrders";
+import OrderDetails from "./pages/Orders/OrderDetails";
 
 export default function App() {
   return (
@@ -29,9 +29,9 @@ export default function App() {
           <Route exact path="/AddInventory" component={AddInventory} />
           <Route exact path="/ListInventory" component={ListInventory} />
           <Route exact path="/AddStaff" component={AddStaff} />
-          <Route exact path="/CurrentOrders" component={CurrentOrders} />
-          <Route exact path="/DispatchOrders" component={DispatchOrders} />
-          <Route exact path="/CompletedOrders" component={CompletedOrders} />
+          <Route exact path="/Orders/:orderstatus" component={CurrentOrders} />
+          <Route exact path="/OrderDetails" component={OrderDetails} />
+          
         </Switch>
       </Router>
       <ToastContainer />
