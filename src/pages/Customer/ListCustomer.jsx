@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import Container from "../../Container/Container";
-import { getAllCustomer, deleteCustomer } from "../../ApiService";
+import { getAllCustomer, deleteCustomer, deleteStaff, getAllStaff } from "../../ApiService";
 
 export default function ListCustomer() {
   const history = useHistory();
@@ -11,7 +11,18 @@ export default function ListCustomer() {
 
   const getallData = () => {
     getAllCustomer().then(({ data }) => {
-      setallCustomer(data.success.data);
+      const finalCustomers = data.success.data.map(({ ...rest }) => ({
+        userType: "customer",
+        ...rest,
+      }));
+
+      getAllStaff().then(({ data }) => {
+        const finalStaff = data.success.data.map(({ userType, ...rest }) => ({
+          userType,
+          ...rest,
+        }));
+        setallCustomer([...finalStaff, ...finalCustomers]);
+      });
     });
   };
 
@@ -19,22 +30,30 @@ export default function ListCustomer() {
     getallData();
   }, []);
 
-  const editCustomer = (index) => {
+  const editCustomer = (id) => {
+    const selectedCustomer = allCustomer.find(({ _id }) => String(_id) === String(id));
     history.push({
-      pathname: "/AddCustomer",
-      state: allCustomer[index],
+      pathname: selectedCustomer.userType === "customer" ? "/AddCustomer" : "/AddStaff",
+      state: selectedCustomer,
     });
   };
 
   const deleteCustomerr = (id) => {
-    // eslint-disable-next-line no-restricted-globals
-    const status = confirm("Are you sure");
+    const status = window.confirm("Are you sure");
     if (status === true) {
-      deleteCustomer(id).then(() => {
-        getallData();
-      });
+      const selectedCustomer = allCustomer.find(({ _id }) => String(_id) === String(id));
+      if (selectedCustomer.userType === "customer") {
+        deleteCustomer(id).then(() => {
+          getallData();
+        });
+      } else {
+        deleteStaff(id).then(() => {
+          getallData();
+        });
+      }
     }
   };
+
   return (
     <Container>
       <div className="card">
@@ -51,25 +70,25 @@ export default function ListCustomer() {
               </tr>
             </thead>
             <tbody>
-              {allCustomer.map(({ name, phoneNumber, email, _id, role }, index) => (
-                <tr key={index}>
+              {allCustomer.map(({ name, phoneNumber, email, _id, userType }) => (
+                <tr key={_id}>
                   <td>{String(_id).substr(0, 6)}</td>
                   <td>{name}</td>
-                  <td>{role}</td>
+                  <td>{userType}</td>
                   <td>{phoneNumber}</td>
                   <td>{email}</td>
                   <td
                     style={{
                       display: "flex",
-                      "justify-content": "space-around",
+                      justifyContent: "space-around",
                       width: "245px",
                     }}
                   >
-                    <button className="btn btn-primary btn-sm" onClick={() => editCustomer(index)}>
+                    <button className="btn btn-primary btn-sm" onClick={() => editCustomer(_id)}>
                       <i className="fas fa-folder pr-1"></i>
                       View
                     </button>
-                    <button className="btn btn-info btn-sm" onClick={() => editCustomer(index)}>
+                    <button className="btn btn-info btn-sm" onClick={() => editCustomer(_id)}>
                       <i className="fas fa-pencil-alt pr-1"></i>
                       Edit
                     </button>

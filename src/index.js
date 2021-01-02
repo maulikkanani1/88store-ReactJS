@@ -9,6 +9,7 @@ import "bootstrap/dist/js/bootstrap.min";
 import "admin-lte/dist/css/adminlte.min.css";
 import "admin-lte/dist/js/adminlte.min";
 import "react-toastify/dist/ReactToastify.css";
+import "./assets/css/main.css";
 
 ReactDOM.render(
   <React.StrictMode>

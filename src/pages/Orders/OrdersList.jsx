@@ -6,6 +6,10 @@ import { getAllOrders } from "../../ApiService";
 
 export default function CurrentOrders() {
   const [currentOrder, setcurrentOrder] = useState([]);
+  const [filterData, setfilterData] = useState([]);
+
+  const [searchText, setsearchText] = useState("");
+
   const history = useHistory();
   const loaction = useParams();
   const { orderstatus } = loaction;
@@ -25,14 +29,54 @@ export default function CurrentOrders() {
       default:
         break;
     }
+    status = "complete";
     getAllOrders(status).then((data) => {
       setcurrentOrder(data);
+      setfilterData(data);
     });
   }, [orderstatus]);
 
+  const openInvoice = (invoice) => {
+    const win = window.open(`http://139.59.46.91:3001/${invoice}`, "_blank");
+    win.focus();
+  };
+
+  const searchOrder = (SearchValue) => {
+    SearchValue = String(SearchValue).toLowerCase();
+    if (Boolean(SearchValue)) {
+      const filterdOrder = currentOrder.filter(({ orderId }) => String(orderId).toLowerCase().match(SearchValue));
+      setcurrentOrder(filterdOrder);
+    } else {
+      setcurrentOrder(filterData);
+    }
+  };
+
   return (
     <Container>
-      <div className="row mb-2">
+      <nav className="navbar navbar-expand navbar-white navbar-light">
+        <div className="form-inline ml-3">
+          <div className="input-group input-group-sm">
+            <input
+              className="form-control form-control-navbar"
+              type="search"
+              placeholder="Search"
+              onChange={(e) => {
+                setsearchText(e.target.value);
+                searchOrder(e.target.value);
+              }}
+              value={searchText}
+              aria-label="Search"
+            />
+            <div className="input-group-append">
+              <button className="btn btn-navbar" onClick={() => searchOrder(searchText)}>
+                <i className="fas fa-search" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div className="row mt-2 mb-2">
         <h2>{orderstatus} Orders</h2>
       </div>
       <div className="card">
@@ -50,7 +94,7 @@ export default function CurrentOrders() {
               </tr>
             </thead>
             <tbody>
-              {currentOrder.map(({ orderId, orderType, createdAt, clientId, finalTotal }, index) => (
+              {currentOrder.map(({ orderId, orderType, createdAt, clientId, finalTotal, invoice }, index) => (
                 <tr key={orderId}>
                   <td>{String(orderId)}</td>
                   <td>{clientId.name}</td>
@@ -66,8 +110,13 @@ export default function CurrentOrders() {
                       <i className="mr-2 fas fa-folder " />
                       /<i className="ml-2 fas fa-pencil-alt" />
                     </button>
+                    {invoice && (
+                      <button className="btn btn-primary btn-sm" onClick={() => openInvoice(invoice)}>
+                        <i className="fas fa-file-invoice"></i>
+                      </button>
+                    )}
                     <button className="btn btn-danger btn-sm">
-                      <i className="fas fa-trash"></i>
+                      <i className="mr-1 fas fa-trash"></i>
                       Delete
                     </button>
                   </td>

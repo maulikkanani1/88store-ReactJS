@@ -26,7 +26,7 @@ export default function ListInventory() {
       <div className="card card-solid">
         <div className="card-body pb-0">
           <div className="row d-flex align-items-stretch">
-            {allInventory.map(({ SKUNumber, images, name, unitPerQuantity, priceOfPurchase }, index) => (
+            {allInventory.map(({ SKUNumber, images, name, availableQuantity, priceOfPurchase }, index) => (
               <div key={index} className="col-12 col-sm-6 col-md-3 d-flex align-items-stretch">
                 <div className="card bg-light">
                   <div className="card-body pt-0">
@@ -43,7 +43,7 @@ export default function ListInventory() {
                           <b>Price : </b> {priceOfPurchase}
                         </p>
                         <p className="text-muted text-sm">
-                          <b>Available Quantity : </b> {unitPerQuantity}
+                          <b>Available Quantity : </b> {availableQuantity}
                         </p>
                       </div>
                       <div className="col-5 text-center">

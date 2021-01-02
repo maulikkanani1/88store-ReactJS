@@ -65,6 +65,11 @@ function SideBar() {
                     <p>Edit Items</p>
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link to="/BulkUpload" className="nav-link">
+                    <p>Bulk Upload</p>
+                  </Link>
+                </li>
               </ul>
             </li>
             <li className="nav-item has-treeview">
