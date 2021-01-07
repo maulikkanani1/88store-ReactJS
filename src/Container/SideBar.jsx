@@ -98,11 +98,36 @@ function SideBar() {
                         <p>Add Staff</p>
                       </Link>
                     </li>
+                    <li className="nav-item">
+                      <Link to="/AddSupplier" className="nav-link">
+                        <p>Add Supplier</p>
+                      </Link>
+                    </li>
                   </ul>
                 </li>
                 <li className="nav-item">
                   <Link to="/ListCustomer" className="nav-link">
                     <p>Edit User</p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/SupplierList" className="nav-link">
+                    <p>Supplier List</p>
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item has-treeview">
+              <Link to="#" className="nav-link">
+                <p>
+                  Expense Manager
+                  <i className="right fas fa-angle-left" />
+                </p>
+              </Link>
+              <ul className="nav nav-treeview">
+                <li className="nav-item">
+                  <Link to="/AddInvoice" className="nav-link">
+                    <p>Add Invoice</p>
                   </Link>
                 </li>
               </ul>

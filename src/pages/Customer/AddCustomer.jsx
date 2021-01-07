@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { useHistory, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { postCustomer, updateCustomer } from "../../ApiService";
 import Container from "../../Container/Container";
+import Custome_Input from "../../components/Custome_Input";
 
 export default function AddCustomer() {
   const history = useHistory();
   const location = useLocation();
-  const { register, handleSubmit, setValue } = useForm();
+  const methods = useForm();
+  const { register, handleSubmit, setValue } = methods;
 
   const [isUpdate, setisUpdate] = useState(false);
 
@@ -59,74 +61,88 @@ export default function AddCustomer() {
             <div className="card-header">
               <h3 className="card-title">{isUpdate ? "UPDATE" : "ADD"} USER</h3>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="card-body">
-                <div className="form-group">
-                  <label>Name</label>
-                  <input className="form-control" placeholder="Enter Name" name="name" ref={register} />
-                </div>
-                <div className="form-group">
-                  <label>Email</label>
-                  <input type="email" className="form-control" placeholder="Enter Email" ref={register} name="email" />
-                </div>
-                <div className="form-group">
-                  <label>Phone Number</label>
-                  <input className="form-control" placeholder="Enter Phone Number" name="phoneNumber" ref={register} />
-                </div>
-                <div className="form-group">
-                  <label>GST Number</label>
-                  <input className="form-control" placeholder="Enter GST Number" ref={register} name="GSTNumber" />
-                </div>
-                <div className="form-group">
-                  <label>Bussiness Type</label>
-                  <select className="form-control select2" style={{ width: "100%" }} ref={register} name="Bussiness Type">
-                    <option >Super Stockist</option>
-                    <option>Wholesale Distributor</option>
-                    <option> Retail Distributor</option>
-                    <option>Retail Store</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label>Address</label>
-                  <textarea
-                    className="form-control"
-                    rows={3}
-                    placeholder="Enter ..."
-                    defaultValue={""}
-                    ref={register}
-                    name="address"
+            <FormProvider {...methods}>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="card-body">
+                  <Custome_Input name="name" label="Name" isrequired />
+                  <Custome_Input name="email" type="email" label="Email" isrequired />
+                  <Custome_Input name="phoneNumber" label="Phone Number" isrequired />
+                  <Custome_Input name="GSTNumber" label="GST Number" isrequired />
+                  <Custome_Input name="email" label="Email" isrequired />
+
+                  <Custome_Input
+                    name="Bussiness Type"
+                    label="Bussiness Type"
+                    isrequired
+                    type="select"
+                    option={[
+                      {
+                        label: "Retail Store",
+                        value: "Retail Store",
+                      },
+                      {
+                        label: "Retail Distributor",
+                        value: "Retail Distributor",
+                      },
+                      {
+                        label: "Super Stockist",
+                        value: "Super Stockist",
+                      },
+                      {
+                        label: "Wholesale Distributor",
+                        value: "Wholesale Distributor",
+                      },
+                    ]}
                   />
+
+                  <Custome_Input tag="textarea" name="address" label="Address" isrequired />
+
+                  <Custome_Input
+                    name="state"
+                    label="State"
+                    isrequired
+                    type="select"
+                    option={[
+                      {
+                        label: "Kerla",
+                        value: "Kerla",
+                      },
+                      {
+                        label: "Tamil Nadu",
+                        value: "Tamil Nadu",
+                      },
+                      {
+                        label: "Karnataka",
+                        value: "Karnataka",
+                      },
+                      {
+                        label: "Pondicherry",
+                        value: "Pondicherry",
+                      },
+                      {
+                        label: "Telengana",
+                        value: "Telengana",
+                      },
+                      {
+                        label: "Andhra Pradesh",
+                        value: "Andhra Pradesh",
+                      },
+                    ]}
+                  />
+                  <Custome_Input name="customerDiscount" type="number" label="Customer Discount" />
+
+                  <Custome_Input name="creditLimitTime" type="number" label="Credit Limit Time" />
+
+                  <Custome_Input name="creditLimitAmount" type="number" label="Credit Limit Amount" />
+
+                  <div className="card-footer">
+                    <button type="submit" className="btn btn-primary">
+                      {isUpdate ? "Update" : "Add"} User
+                    </button>
+                  </div>
                 </div>
-                <div className="form-group">
-                  <label>State</label>
-                  <select className="form-control select2" style={{ width: "100%" }} ref={register} name="state">
-                    <option >Kerla</option>
-                    <option>Tamil Nadu</option>
-                    <option>Karnataka</option>
-                    <option>Pondicherry</option>
-                    <option>Telengana</option>
-                    <option>Andhra Pradesh</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label>Customer Discount</label>
-                  <input ref={register} name="customerDiscount" type="number" className="form-control" placeholder="Enter Customer Discount" />
-                </div>
-                <div className="form-group">
-                  <label>Credit Limit Time</label>
-                  <input ref={register} name="creditLimitTime" type="number" className="form-control" placeholder="Enter Credit Limit Time" />
-                </div>
-                <div className="form-group">
-                  <label>Credit Limit Amount</label>
-                  <input ref={register} name="creditLimitAmount" type="number" className="form-control" placeholder="Enter Credit Limit Amount" />
-                </div>
-                <div className="card-footer">
-                  <button type="submit" className="btn btn-primary">
-                    {isUpdate ? "Update" : "Add"} User
-                  </button>
-                </div>
-              </div>
-            </form>
+              </form>
+            </FormProvider>
           </div>
         </div>
       </div>

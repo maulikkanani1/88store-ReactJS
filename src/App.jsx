@@ -7,6 +7,8 @@ import DashBoard from "./pages/DashBoard";
 import AddCustomer from "./pages/Customer/AddCustomer";
 import ListCustomer from "./pages/Customer/ListCustomer";
 import AddStaff from "./pages/Customer/AddStaff";
+import AddSupplier from "./pages/Customer/AddSupplier";
+import SupplierList from "./pages/Customer/SupplierList";
 
 import AddInventory from "./pages/Inventory/AddInventory";
 import ListInventory from "./pages/Inventory/ListInventory";
@@ -14,6 +16,8 @@ import BulkUpload from "./pages/Inventory/BulkUpload";
 
 import OrdersList from "./pages/Orders/OrdersList";
 import OrderDetails from "./pages/Orders/OrderDetails";
+
+import AddInvoice from "./pages/ExpenseManager/AddInvoice";
 
 export default function App() {
   return (
@@ -29,8 +33,13 @@ export default function App() {
           <Route exact path="/ListInventory" component={ListInventory} />
           <Route exact path="/BulkUpload" component={BulkUpload} />
           <Route exact path="/AddStaff" component={AddStaff} />
+          <Route exact path="/AddSupplier" component={AddSupplier} />
+          <Route exact path="/SupplierList" component={SupplierList} />
+
           <Route exact path="/Orders/:orderstatus" component={OrdersList} />
           <Route exact path="/OrderDetails" component={OrderDetails} />
+
+          <Route exact path="/AddInvoice" component={AddInvoice} />
         </Switch>
       </Router>
       <ToastContainer />

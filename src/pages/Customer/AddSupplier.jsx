@@ -3,18 +3,18 @@ import { useForm, FormProvider } from "react-hook-form";
 import { useHistory, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { postStaff, updateStaff } from "../../ApiService";
-import Container from "../../Container/Container";
+import { postSupplier, updateSupplier } from "../../ApiService";
 import Custome_Input from "../../components/Custome_Input";
+import Container from "../../Container/Container";
 
-export default function AddStaff() {
+export default function AddSupplier() {
   const history = useHistory();
   const location = useLocation();
-  const [isUpdate, setisUpdate] = useState(false);
-
   const methods = useForm();
   const { handleSubmit, setValue } = methods;
-  
+
+  const [isUpdate, setisUpdate] = useState(false);
+
   useEffect(() => {
     if (location.state) {
       setisUpdate(true);
@@ -24,22 +24,22 @@ export default function AddStaff() {
 
   const onSubmit = (data) => {
     if (isUpdate) {
-      updateStaff(location.state._id, data)
+      updateSupplier(location.state._id, data)
         .then(({ data }) => {
           if (data.success.statusCode === 200) {
-            toast.success("Updated staff success");
-            history.push("/ListCustomer");
+            toast.success("Updated Supplier success");
+            history.push("/SupplierList");
           } else {
             console.log(data);
           }
         })
         .catch((error) => console.log("error", error));
     } else {
-      postStaff(data)
+      postSupplier(data)
         .then(({ data }) => {
           if (data.success.statusCode === 200) {
-            toast.success("Added staff success");
-            history.push("/ListCustomer");
+            toast.success("Added Supplier success");
+            history.push("/SupplierList");
           } else {
             console.log(data);
           }
@@ -54,38 +54,19 @@ export default function AddStaff() {
         <div className="col-md-12">
           <div className="card card-primary">
             <div className="card-header">
-              <h3 className="card-title">{isUpdate ? "UPDATE" : "ADD"} STAFF</h3>
+              <h3 className="card-title">{isUpdate ? "UPDATE" : "ADD"} Supplier</h3>
             </div>
             <FormProvider {...methods}>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="card-body">
-                  <Custome_Input
-                    name="userType"
-                    label="User Type"
-                    isrequired
-                    type="select"
-                    option={[
-                      {
-                        label: "Sales Person",
-                        value: "Sales Person",
-                      },
-                      {
-                        label: "Warehouse",
-                        value: "Warehouse",
-                      },
-                      {
-                        label: "Partner",
-                        value: "Partner",
-                      },
-                    ]}
-                  />
-                  <Custome_Input name="name" label="Name" isrequired />
-                  <Custome_Input name="email" type="email" label="Email" isrequired />
-                  <Custome_Input name="phoneNumber" label="Phone Number" isrequired />
-
+                  <Custome_Input name="supplierName" label="Supplier name" isrequired />
+                  <Custome_Input name="supplierEmail" type="email" label="Supplier Email" isrequired />
+                  <Custome_Input name="supplierPhoneNumber" label="Supplier Phone Number" isrequired />
+                  <Custome_Input name="supplierAddress" label="Supplier Address" isrequired />
+                  <Custome_Input name="supplierGST" label="Supplier GST" isrequired />
                   <div className="card-footer">
                     <button type="submit" className="btn btn-primary">
-                      {isUpdate ? "Update" : "Add"} Staff
+                      {isUpdate ? "Update" : "Add"} Supplier
                     </button>
                   </div>
                 </div>

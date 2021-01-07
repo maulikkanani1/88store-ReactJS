@@ -29,7 +29,6 @@ export default function CurrentOrders() {
       default:
         break;
     }
-    status = "complete";
     getAllOrders(status).then((data) => {
       setcurrentOrder(data);
       setfilterData(data);
