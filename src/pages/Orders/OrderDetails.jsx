@@ -252,7 +252,7 @@ const CompleteOrder = ({ _id, address }) => {
   const [paymentForm, setpaymentForm] = useState({
     due_amount: "",
     paid_amount: "",
-    mode_of_payment: "",
+    mode_of_payment: "Processed Food",
   });
 
   const post_Completeorder = () => {
@@ -260,7 +260,7 @@ const CompleteOrder = ({ _id, address }) => {
       due_amount: Number(paymentForm.due_amount) - Number(paymentForm.paid_amount),
       mode_of_payment: paymentForm.mode_of_payment,
       paid_amount: paymentForm.paid_amount,
-      orderStatus: "complete",
+      // orderStatus: "complete",
     };
 
     update_Order(finaldata, _id)

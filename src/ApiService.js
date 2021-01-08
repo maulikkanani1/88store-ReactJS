@@ -12,6 +12,7 @@ export const getAllCustomer = () => axios.get(`${MAIN_API}/getAllClients`);
 
 export const postInventory = (data) => axios.post(`${MAIN_API}/inventory`, data);
 export const updateInventory = (id, data) => axios.put(`${MAIN_API}/inventory/${id}`, data);
+export const deleteInventory = (id) => axios.delete(`${MAIN_API}/inventory/${id}`);
 export const getAllInventory = () => axios.get(`${MAIN_API}/allInventory`);
 export const bulkUpload_Inventory = (data) => axios.post(`${MAIN_API}/bulkInventory`, data);
 

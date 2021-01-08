@@ -2,16 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import Container from "../../Container/Container";
-import { getAllInventory } from "../../ApiService";
+import { getAllInventory, deleteInventory } from "../../ApiService";
+import { toast } from "react-toastify";
 
 export default function ListInventory() {
   const history = useHistory();
   const [allInventory, setallInventory] = useState([]);
 
-  useEffect(() => {
+  const getData = () => {
     getAllInventory().then(({ data }) => {
       setallInventory(data.success.data);
     });
+  };
+  useEffect(() => {
+    getData();
   }, []);
 
   const editInventory = (index) => {
@@ -21,12 +25,19 @@ export default function ListInventory() {
     });
   };
 
+  const performDeletion = (_id) => {
+    deleteInventory(_id).then(() => {
+      toast.warning("Deleted Inventory");
+      getData();
+    });
+  };
+  
   return (
     <Container>
       <div className="card card-solid">
         <div className="card-body pb-0">
           <div className="row d-flex align-items-stretch">
-            {allInventory.map(({ SKUNumber, images, name, availableQuantity, priceOfPurchase }, index) => (
+            {allInventory.map(({ SKUNumber, images, name, availableQuantity, priceOfPurchase, _id }, index) => (
               <div key={index} className="col-12 col-sm-6 col-md-3 d-flex align-items-stretch">
                 <div className="card bg-light">
                   <div className="card-body pt-0">
@@ -58,8 +69,11 @@ export default function ListInventory() {
                   </div>
                   <div className="card-footer">
                     <div className="text-right">
-                      <button onClick={() => editInventory(index)} className="btn btn-sm btn-primary">
+                      <button onClick={() => editInventory(index)} className="btn btn-sm btn-primary mr-2">
                         EDIT
+                      </button>
+                      <button onClick={() => performDeletion(_id)} className="btn btn-sm btn-primary">
+                        <i className="fas fa-trash "></i>
                       </button>
                     </div>
                   </div>
